@@ -5,12 +5,24 @@ import { ParsedRow } from '@/lib/parser';
 interface DataTableProps {
   headers: string[];
   rows: ParsedRow[];
+  selectedRows: Set<number>;
+  onRowSelect: (rowIndex: number) => void;
+  onSelectAll: (selected: boolean) => void;
 }
 
-export default function DataTable({ headers, rows }: DataTableProps) {
+export default function DataTable({
+  headers,
+  rows,
+  selectedRows,
+  onRowSelect,
+  onSelectAll
+}: DataTableProps) {
   if (headers.length === 0 || rows.length === 0) {
     return null;
   }
+
+  const allSelected = selectedRows.size === rows.length && rows.length > 0;
+  const someSelected = selectedRows.size > 0 && selectedRows.size < rows.length;
 
   return (
     <div className="w-full overflow-auto border border-[#e5e5e5] rounded-xl shadow-sm bg-white">
@@ -18,6 +30,21 @@ export default function DataTable({ headers, rows }: DataTableProps) {
         <table className="min-w-full divide-y divide-[#e5e5e5]">
           <thead className="bg-[#fafafa] sticky top-0 z-10">
             <tr>
+              <th className="px-4 py-3.5 w-12 border-r border-[#e5e5e5]">
+                <div className="flex items-center justify-center">
+                  <input
+                    type="checkbox"
+                    checked={allSelected}
+                    ref={(input) => {
+                      if (input) {
+                        input.indeterminate = someSelected;
+                      }
+                    }}
+                    onChange={(e) => onSelectAll(e.target.checked)}
+                    className="w-4 h-4 rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
+                  />
+                </div>
+              </th>
               {headers.map((header, idx) => (
                 <th
                   key={idx}
@@ -32,8 +59,22 @@ export default function DataTable({ headers, rows }: DataTableProps) {
             {rows.map((row, rowIdx) => (
               <tr
                 key={rowIdx}
-                className="hover:bg-[#fafafa] transition-colors"
+                className={`transition-colors ${
+                  selectedRows.has(rowIdx)
+                    ? 'bg-[#D2886F]/10'
+                    : 'hover:bg-[#fafafa]'
+                }`}
               >
+                <td className="px-4 py-3 w-12 border-r border-[#e5e5e5]">
+                  <div className="flex items-center justify-center">
+                    <input
+                      type="checkbox"
+                      checked={selectedRows.has(rowIdx)}
+                      onChange={() => onRowSelect(rowIdx)}
+                      className="w-4 h-4 rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
+                    />
+                  </div>
+                </td>
                 {headers.map((header, colIdx) => (
                   <td
                     key={colIdx}

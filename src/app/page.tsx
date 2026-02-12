@@ -11,6 +11,7 @@ export default function Home() {
   const [parseResult, setParseResult] = useState<ParseResult | null>(null);
   const [filename, setFilename] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
 
   const handleFileLoad = (workbook: XLSX.WorkBook, fileName: string) => {
     try {
@@ -18,6 +19,7 @@ export default function Home() {
       const result = parseWorkbook(workbook);
       setParseResult(result);
       setFilename(fileName);
+      setSelectedRows(new Set()); // 새 파일 로드 시 선택 초기화
     } catch (error) {
       console.error('파싱 오류:', error);
       setError(error instanceof Error ? error.message : '파일 파싱 중 오류가 발생했습니다.');
@@ -29,6 +31,27 @@ export default function Home() {
     setParseResult(null);
     setFilename('');
     setError('');
+    setSelectedRows(new Set());
+  };
+
+  const handleRowSelect = (rowIndex: number) => {
+    setSelectedRows(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(rowIndex)) {
+        newSet.delete(rowIndex);
+      } else {
+        newSet.add(rowIndex);
+      }
+      return newSet;
+    });
+  };
+
+  const handleSelectAll = (selected: boolean) => {
+    if (selected && parseResult) {
+      setSelectedRows(new Set(Array.from({ length: parseResult.rows.length }, (_, i) => i)));
+    } else {
+      setSelectedRows(new Set());
+    }
   };
 
   return (
@@ -89,8 +112,8 @@ export default function Home() {
               <ol className="list-decimal list-inside space-y-3 text-[#525252]">
                 <li>사업관리카드(예산) .xls 또는 .xlsx 파일을 업로드하세요</li>
                 <li>파일이 자동으로 파싱되어 정규화된 테이블로 표시됩니다</li>
-                <li>&quot;전체 복사&quot; 버튼으로 데이터를 복사하거나, &quot;엑셀 다운로드&quot; 버튼으로 파일을 저장하세요</li>
-                <li>테이블의 셀을 드래그하여 원하는 범위를 복사할 수도 있습니다</li>
+                <li>체크박스로 원하는 행을 선택할 수 있습니다</li>
+                <li>&quot;전체 복사/다운로드&quot; 또는 &quot;선택 항목 복사/다운로드&quot; 버튼을 사용하세요</li>
               </ol>
             </div>
           </>
@@ -118,6 +141,7 @@ export default function Home() {
             <Toolbar
               headers={parseResult.headers}
               rows={parseResult.rows}
+              selectedRows={selectedRows}
               filename={filename}
             />
 
@@ -125,6 +149,9 @@ export default function Home() {
             <DataTable
               headers={parseResult.headers}
               rows={parseResult.rows}
+              selectedRows={selectedRows}
+              onRowSelect={handleRowSelect}
+              onSelectAll={handleSelectAll}
             />
           </>
         )}

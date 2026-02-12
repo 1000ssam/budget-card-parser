@@ -74,14 +74,14 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl">
       <div
         onClick={handleClick}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         className={`
-          border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer
+          border-2 border-dashed rounded-2xl p-16 text-center cursor-pointer
           transition-all duration-200 bg-white
           ${isDragging
             ? 'border-[#D2886F] bg-[#D2886F]/5 shadow-lg'
@@ -89,9 +89,9 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
           }
         `}
       >
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-6">
           <svg
-            className="w-16 h-16 text-[#a3a3a3]"
+            className="w-20 h-20 text-[#a3a3a3]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -105,17 +105,17 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
           </svg>
 
           <div>
-            <p className="text-lg font-medium text-[#171717]">
+            <p className="text-2xl font-light text-[#171717] tracking-tight">
               사업관리카드(예산) 파일을 선택하거나 드래그하세요
             </p>
-            <p className="text-sm text-[#525252] mt-2">
+            <p className="text-lg font-light text-[#525252] mt-3">
               .xls, .xlsx 파일 지원
             </p>
           </div>
 
           <button
             type="button"
-            className="px-8 py-3 bg-[#D2886F] text-white rounded-full hover:bg-[#C17760] transition-all hover:shadow-lg hover:-translate-y-0.5"
+            className="px-10 py-4 text-lg bg-[#D2886F] text-white rounded-full hover:bg-[#C17760] transition-all hover:shadow-lg hover:-translate-y-0.5 font-normal tracking-tight"
             onClick={(e) => {
               e.stopPropagation();
               handleClick();

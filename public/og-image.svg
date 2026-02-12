@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Grid pattern overlay -->
+  <g opacity="0.3">
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#e5e5e5" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#e5e5e5" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#e5e5e5" stroke-width="1"/>
+    <line x1="0" y1="157.5" x2="1200" y2="157.5" stroke="#e5e5e5" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#e5e5e5" stroke-width="1"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5" stroke="#e5e5e5" stroke-width="1"/>
+  </g>
+
+  <!-- Decorative table icon -->
+  <g transform="translate(150, 180)">
+    <rect x="0" y="0" width="280" height="50" rx="8" fill="#D2886F" opacity="0.15"/>
+    <rect x="0" y="60" width="280" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <rect x="0" y="110" width="280" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <rect x="0" y="160" width="280" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <line x1="70" y1="0" x2="70" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+    <line x1="140" y1="0" x2="140" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+    <line x1="210" y1="0" x2="210" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+  </g>
+
+  <!-- Arrow indicating transformation -->
+  <g transform="translate(480, 280)">
+    <path d="M0 0 L80 0 L80 -20 L120 20 L80 60 L80 40 L0 40 Z" fill="#D2886F" opacity="0.8"/>
+  </g>
+
+  <!-- Transformed table icon -->
+  <g transform="translate(650, 180)">
+    <rect x="0" y="0" width="400" height="50" rx="8" fill="#D2886F" opacity="0.15"/>
+    <rect x="0" y="60" width="400" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <rect x="0" y="110" width="400" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <rect x="0" y="160" width="400" height="40" rx="6" fill="#171717" opacity="0.05"/>
+    <line x1="100" y1="0" x2="100" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+    <line x1="200" y1="0" x2="200" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+    <line x1="300" y1="0" x2="300" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+  </g>
+
+  <!-- Badge -->
+  <g transform="translate(500, 80)">
+    <rect x="0" y="0" width="200" height="36" rx="18" fill="white" stroke="#e5e5e5" stroke-width="2"/>
+    <text x="100" y="24" font-family="Pretendard Variable, -apple-system, sans-serif" font-size="14" font-weight="300" fill="#525252" text-anchor="middle" letter-spacing="-0.02em">학교 예산 관리 도구</text>
+  </g>
+
+  <!-- Main title -->
+  <text x="600" y="480" font-family="Pretendard Variable, -apple-system, sans-serif" font-size="72" font-weight="300" fill="#171717" text-anchor="middle" letter-spacing="-0.04em">사업관리카드 파서</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="530" font-family="Pretendard Variable, -apple-system, sans-serif" font-size="24" font-weight="300" fill="#525252" text-anchor="middle" letter-spacing="-0.02em">들여쓰기로 병합된 엑셀 파일을 정규화된 테이블로 변환</text>
+
+  <!-- Footer badge -->
+  <g transform="translate(1020, 560)">
+    <rect x="0" y="0" width="140" height="32" rx="16" fill="#D2886F" opacity="0.1"/>
+    <text x="70" y="21" font-family="Pretendard Variable, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#D2886F" text-anchor="middle" letter-spacing="-0.01em">1000ssam</text>
+  </g>
+</svg>

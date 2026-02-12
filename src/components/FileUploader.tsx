@@ -81,7 +81,7 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         className={`
-          border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer
+          border-2 border-dashed rounded-lg p-6 text-center cursor-pointer
           transition-all duration-200 bg-white
           ${isDragging
             ? 'border-[#D2886F] bg-[#D2886F]/5 shadow-lg'
@@ -89,9 +89,9 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
           }
         `}
       >
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex items-center justify-center gap-4">
           <svg
-            className="w-16 h-16 text-[#a3a3a3]"
+            className="w-8 h-8 text-[#a3a3a3] flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -104,18 +104,18 @@ export default function FileUploader({ onFileLoad }: FileUploaderProps) {
             />
           </svg>
 
-          <div>
-            <p className="text-xl font-light text-[#171717] tracking-tight">
+          <div className="flex-1 text-left">
+            <p className="text-sm font-light text-[#171717] tracking-tight">
               사업관리카드(예산) 파일을 선택하거나 드래그하세요
             </p>
-            <p className="text-base font-light text-[#525252] mt-2">
+            <p className="text-xs font-light text-[#525252] mt-1">
               .xls, .xlsx 파일 지원
             </p>
           </div>
 
           <button
             type="button"
-            className="px-8 py-3 text-base bg-[#D2886F] text-white rounded-full hover:bg-[#C17760] transition-all hover:shadow-lg hover:-translate-y-0.5 font-normal tracking-tight"
+            className="px-4 py-2 text-sm bg-[#D2886F] text-white rounded-lg hover:bg-[#C17760] transition-all hover:shadow-md font-normal tracking-tight flex-shrink-0"
             onClick={(e) => {
               e.stopPropagation();
               handleClick();

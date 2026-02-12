@@ -55,17 +55,17 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div className="min-h-screen py-6 px-4">
       <div className="max-w-7xl mx-auto">
         {/* 헤더 - 중앙 정렬 */}
-        <div className="mb-16 text-center">
-          <div className="inline-flex items-center px-5 py-2 bg-white/50 backdrop-blur-[10px] border border-[#e5e5e5] rounded-full text-sm font-light text-[#525252] mb-6 tracking-tight">
+        <div className="mb-6 text-center">
+          <div className="inline-flex items-center px-3 py-1 bg-white/50 backdrop-blur-[10px] border border-[#e5e5e5] rounded-full text-xs font-light text-[#525252] mb-3 tracking-tight">
             학교 예산 관리 도구
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[#171717] leading-[1.1] tracking-[-0.04em] mb-6 mx-auto max-w-4xl">
+          <h1 className="text-2xl font-light text-[#171717] leading-tight tracking-[-0.02em] mb-2 mx-auto">
             사업관리카드 파서
           </h1>
-          <p className="text-lg md:text-xl font-light text-[#525252] leading-[1.6] tracking-[-0.02em] mx-auto max-w-2xl">
+          <p className="text-sm font-light text-[#525252] leading-snug tracking-tight mx-auto max-w-2xl">
             들여쓰기로 병합된 엑셀 파일을 정규화된 테이블로 변환합니다
           </p>
         </div>
@@ -77,10 +77,10 @@ export default function Home() {
 
             {/* 오류 메시지 */}
             {error && (
-              <div className="mt-8 max-w-2xl w-full p-5 bg-white border border-red-300 rounded-xl shadow-sm">
-                <div className="flex items-start gap-3">
+              <div className="mt-4 max-w-2xl w-full p-3 bg-white border border-red-300 rounded-lg shadow-sm">
+                <div className="flex items-start gap-2">
                   <svg
-                    className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5"
+                    className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -93,10 +93,10 @@ export default function Home() {
                     />
                   </svg>
                   <div>
-                    <h3 className="text-base font-normal text-[#171717] mb-1 tracking-tight">
+                    <h3 className="text-sm font-normal text-[#171717] mb-0.5 tracking-tight">
                       파싱 오류
                     </h3>
-                    <p className="text-sm font-light text-[#525252] leading-relaxed">
+                    <p className="text-xs font-light text-[#525252] leading-relaxed">
                       {error}
                     </p>
                   </div>
@@ -105,11 +105,11 @@ export default function Home() {
             )}
 
             {/* 사용 안내 */}
-            <div className="mt-8 max-w-2xl w-full p-5 bg-white border border-[#e5e5e5] rounded-xl shadow-sm">
-              <h3 className="text-base font-normal text-[#171717] mb-4 tracking-tight">
+            <div className="mt-4 max-w-2xl w-full p-3 bg-white border border-[#e5e5e5] rounded-lg shadow-sm">
+              <h3 className="text-sm font-normal text-[#171717] mb-2 tracking-tight">
                 사용 방법
               </h3>
-              <ol className="list-decimal list-inside space-y-2 text-sm font-light text-[#525252] leading-relaxed">
+              <ol className="list-decimal list-inside space-y-1 text-xs font-light text-[#525252] leading-relaxed">
                 <li>사업관리카드(예산) .xls 또는 .xlsx 파일을 업로드하세요</li>
                 <li>파일이 자동으로 파싱되어 정규화된 테이블로 표시됩니다</li>
                 <li>체크박스로 원하는 행을 선택할 수 있습니다</li>
@@ -120,18 +120,18 @@ export default function Home() {
         ) : (
           <>
             {/* 파일 정보 및 리셋 버튼 */}
-            <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 rounded-xl shadow-sm border border-[#e5e5e5]">
+            <div className="mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-white p-3 rounded-lg shadow-sm border border-[#e5e5e5]">
               <div>
-                <h2 className="text-base font-normal text-[#171717] tracking-tight">
+                <h2 className="text-sm font-normal text-[#171717] tracking-tight">
                   {filename}
                 </h2>
-                <p className="text-sm font-light text-[#525252] mt-1">
+                <p className="text-xs font-light text-[#525252] mt-0.5">
                   파싱 완료 ✓
                 </p>
               </div>
               <button
                 onClick={handleReset}
-                className="px-4 py-2 bg-white border border-[#e5e5e5] text-[#525252] text-sm font-normal rounded-lg hover:border-[#D2886F] hover:text-[#171717] transition-all tracking-tight whitespace-nowrap"
+                className="px-3 py-1.5 bg-white border border-[#e5e5e5] text-[#525252] text-xs font-normal rounded-lg hover:border-[#D2886F] hover:text-[#171717] transition-all tracking-tight whitespace-nowrap"
               >
                 다른 파일 업로드
               </button>

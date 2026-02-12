@@ -5,6 +5,7 @@ import * as XLSX from 'xlsx';
 import FileUploader from '@/components/FileUploader';
 import DataTable from '@/components/DataTable';
 import Toolbar from '@/components/Toolbar';
+import Footer from '@/components/Footer';
 import { parseWorkbook, ParseResult } from '@/lib/parser';
 
 export default function Home() {
@@ -155,6 +156,9 @@ export default function Home() {
             />
           </>
         )}
+
+        {/* 푸터 */}
+        <Footer />
       </div>
     </div>
   );

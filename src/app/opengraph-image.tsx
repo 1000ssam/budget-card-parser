@@ -199,7 +199,7 @@ export default async function Image() {
             color: '#D2886F',
           }}
         >
-          1000ssam
+          1000쌤
         </div>
       </div>
     ),

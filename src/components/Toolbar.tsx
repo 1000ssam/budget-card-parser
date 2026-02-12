@@ -68,11 +68,11 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
   };
 
   return (
-    <div className="space-y-4 mb-10">
+    <div className="space-y-3 mb-8">
       {/* 선택 정보 */}
       {hasSelection && (
-        <div className="flex items-center gap-3 text-base text-[#525252] font-light">
-          <svg className="w-5 h-5 text-[#D2886F]" fill="currentColor" viewBox="0 0 20 20">
+        <div className="flex items-center gap-2.5 text-sm text-[#525252] font-light">
+          <svg className="w-4 h-4 text-[#D2886F]" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
           <span className="tracking-tight">
@@ -82,13 +82,13 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
       )}
 
       {/* 버튼 그룹 */}
-      <div className="flex items-center gap-4 flex-wrap">
+      <div className="flex items-center gap-3 flex-wrap">
         {/* 전체 복사/다운로드 */}
         <button
           onClick={handleCopyAll}
-          className="px-6 py-3 bg-white border border-[#e5e5e5] text-[#171717] text-base font-normal rounded-lg hover:border-[#D2886F] hover:shadow-md transition-all flex items-center gap-2.5 tracking-tight"
+          className="px-5 py-2.5 bg-white border border-[#e5e5e5] text-[#171717] text-sm font-normal rounded-lg hover:border-[#D2886F] hover:shadow-md transition-all flex items-center gap-2 tracking-tight"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
           전체 복사
@@ -96,9 +96,9 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
 
         <button
           onClick={handleDownloadAll}
-          className="px-6 py-3 bg-[#D2886F] text-white text-base font-normal rounded-lg hover:bg-[#C17760] transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2.5 tracking-tight"
+          className="px-5 py-2.5 bg-[#D2886F] text-white text-sm font-normal rounded-lg hover:bg-[#C17760] transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 tracking-tight"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
           전체 다운로드
@@ -107,13 +107,13 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
         {/* 선택 복사/다운로드 */}
         {hasSelection && (
           <>
-            <div className="w-px h-10 bg-[#e5e5e5]" />
+            <div className="w-px h-8 bg-[#e5e5e5]" />
 
             <button
               onClick={handleCopySelected}
-              className="px-6 py-3 bg-white border-2 border-[#D2886F] text-[#D2886F] text-base font-normal rounded-lg hover:bg-[#D2886F] hover:text-white transition-all flex items-center gap-2.5 tracking-tight"
+              className="px-5 py-2.5 bg-white border-2 border-[#D2886F] text-[#D2886F] text-sm font-normal rounded-lg hover:bg-[#D2886F] hover:text-white transition-all flex items-center gap-2 tracking-tight"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
               선택 항목 복사 ({selectedRows.size})
@@ -121,9 +121,9 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
 
             <button
               onClick={handleDownloadSelected}
-              className="px-6 py-3 bg-white border-2 border-[#D2886F] text-[#D2886F] text-base font-normal rounded-lg hover:bg-[#D2886F] hover:text-white transition-all flex items-center gap-2.5 tracking-tight"
+              className="px-5 py-2.5 bg-white border-2 border-[#D2886F] text-[#D2886F] text-sm font-normal rounded-lg hover:bg-[#D2886F] hover:text-white transition-all flex items-center gap-2 tracking-tight"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
               선택 항목 다운로드 ({selectedRows.size})
@@ -131,7 +131,7 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
           </>
         )}
 
-        <div className="ml-auto text-base text-[#525252] font-light tracking-tight">
+        <div className="ml-auto text-sm text-[#525252] font-light tracking-tight">
           총 {rows.length}행
         </div>
       </div>

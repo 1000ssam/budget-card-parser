@@ -30,7 +30,7 @@ export default function DataTable({
         <table className="min-w-full divide-y divide-[#e5e5e5]">
           <thead className="bg-[#fafafa] sticky top-0 z-10">
             <tr>
-              <th className="px-6 py-4 w-16 border-r border-[#e5e5e5]">
+              <th className="px-4 py-3 w-12 border-r border-[#e5e5e5]">
                 <div className="flex items-center justify-center">
                   <input
                     type="checkbox"
@@ -41,14 +41,14 @@ export default function DataTable({
                       }
                     }}
                     onChange={(e) => onSelectAll(e.target.checked)}
-                    className="w-[18px] h-[18px] rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
+                    className="w-4 h-4 rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
                   />
                 </div>
               </th>
               {headers.map((header, idx) => (
                 <th
                   key={idx}
-                  className="px-6 py-4 text-left text-sm font-normal text-[#525252] tracking-tight whitespace-nowrap border-r border-[#e5e5e5] last:border-r-0"
+                  className="px-4 py-3 text-left text-sm font-normal text-[#525252] tracking-tight whitespace-nowrap border-r border-[#e5e5e5] last:border-r-0"
                 >
                   {header}
                 </th>
@@ -65,20 +65,20 @@ export default function DataTable({
                     : 'hover:bg-[#fafafa]'
                 }`}
               >
-                <td className="px-6 py-4 w-16 border-r border-[#e5e5e5]">
+                <td className="px-4 py-3 w-12 border-r border-[#e5e5e5]">
                   <div className="flex items-center justify-center">
                     <input
                       type="checkbox"
                       checked={selectedRows.has(rowIdx)}
                       onChange={() => onRowSelect(rowIdx)}
-                      className="w-[18px] h-[18px] rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
+                      className="w-4 h-4 rounded border-[#e5e5e5] text-[#D2886F] focus:ring-[#D2886F] focus:ring-offset-0 cursor-pointer"
                     />
                   </div>
                 </td>
                 {headers.map((header, colIdx) => (
                   <td
                     key={colIdx}
-                    className="px-6 py-4 text-base font-light text-[#171717] whitespace-nowrap border-r border-[#e5e5e5] last:border-r-0 select-text tracking-tight"
+                    className="px-4 py-3 text-sm font-light text-[#171717] whitespace-nowrap border-r border-[#e5e5e5] last:border-r-0 select-text tracking-tight"
                   >
                     {row[header] !== undefined && row[header] !== null
                       ? String(row[header])

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { ParsedRow } from '@/lib/parser';
 import { convertToTSV, exportToXLSX } from '@/lib/export';
 
@@ -11,13 +12,14 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ headers, rows, selectedRows, filename }: ToolbarProps) {
+  const [includeHeaders, setIncludeHeaders] = useState(true);
   const selectedRowsArray = Array.from(selectedRows).sort((a, b) => a - b);
   const selectedData = selectedRowsArray.map(idx => rows[idx]);
   const hasSelection = selectedRows.size > 0;
 
   const handleCopyAll = async () => {
     try {
-      const tsv = convertToTSV(headers, rows);
+      const tsv = convertToTSV(headers, rows, includeHeaders);
       await navigator.clipboard.writeText(tsv);
       alert('전체 데이터가 클립보드에 복사되었습니다. 엑셀에 붙여넣을 수 있습니다.');
     } catch (error) {
@@ -33,7 +35,7 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
     }
 
     try {
-      const tsv = convertToTSV(headers, selectedData);
+      const tsv = convertToTSV(headers, selectedData, includeHeaders);
       await navigator.clipboard.writeText(tsv);
       alert(`선택된 ${selectedRows.size}개 행이 클립보드에 복사되었습니다.`);
     } catch (error) {
@@ -119,9 +121,20 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
           </>
         )}
 
-        <div className="ml-auto text-xs text-[#525252] font-light tracking-tight">
-          총 {rows.length}행
-          {hasSelection && <span className="ml-2 text-[#D2886F]">({selectedRows.size}개 선택)</span>}
+        <div className="ml-auto flex items-center gap-3">
+          <label className="flex items-center gap-1.5 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={includeHeaders}
+              onChange={(e) => setIncludeHeaders(e.target.checked)}
+              className="w-3.5 h-3.5 rounded border-[#e5e5e5] text-[#D2886F] accent-[#D2886F] cursor-pointer"
+            />
+            <span className="text-xs text-[#525252] font-light tracking-tight">헤더 포함 복사</span>
+          </label>
+          <span className="text-xs text-[#525252] font-light tracking-tight">
+            총 {rows.length}행
+            {hasSelection && <span className="ml-2 text-[#D2886F]">({selectedRows.size}개 선택)</span>}
+          </span>
         </div>
       </div>
     </div>

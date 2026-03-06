@@ -49,11 +49,13 @@ export function exportToXLSX(headers: string[], rows: ParsedRow[], filename: str
 /**
  * 데이터를 TSV 형식으로 변환 (클립보드 복사용)
  */
-export function convertToTSV(headers: string[], rows: ParsedRow[]): string {
+export function convertToTSV(headers: string[], rows: ParsedRow[], includeHeaders: boolean = true): string {
   const lines: string[] = [];
 
   // 헤더
-  lines.push(headers.join('\t'));
+  if (includeHeaders) {
+    lines.push(headers.join('\t'));
+  }
 
   // 데이터
   rows.forEach(row => {

@@ -68,3 +68,43 @@ export function convertToTSV(headers: string[], rows: ParsedRow[], includeHeader
 
   return lines.join('\n');
 }
+
+/**
+ * 데이터를 HTML 테이블로 변환 (노션 등 리치 텍스트 붙여넣기 호환)
+ */
+export function convertToHTML(headers: string[], rows: ParsedRow[], includeHeaders: boolean = true): string {
+  const escapeHtml = (str: string) =>
+    str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  let html = '<table>';
+
+  if (includeHeaders) {
+    html += '<tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr>';
+  }
+
+  rows.forEach(row => {
+    html += '<tr>' + headers.map(header => {
+      const value = row[header];
+      const str = value !== undefined && value !== null ? String(value) : '';
+      return `<td>${escapeHtml(str)}</td>`;
+    }).join('') + '</tr>';
+  });
+
+  html += '</table>';
+  return html;
+}
+
+/**
+ * TSV + HTML 테이블을 모두 클립보드에 복사 (엑셀 + 노션 호환)
+ */
+export async function copyToClipboard(headers: string[], rows: ParsedRow[], includeHeaders: boolean = true): Promise<void> {
+  const tsv = convertToTSV(headers, rows, includeHeaders);
+  const html = convertToHTML(headers, rows, includeHeaders);
+
+  const clipboardItem = new ClipboardItem({
+    'text/plain': new Blob([tsv], { type: 'text/plain' }),
+    'text/html': new Blob([html], { type: 'text/html' }),
+  });
+
+  await navigator.clipboard.write([clipboardItem]);
+}

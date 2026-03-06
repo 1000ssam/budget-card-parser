@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ParsedRow } from '@/lib/parser';
-import { convertToTSV, exportToXLSX } from '@/lib/export';
+import { copyToClipboard, exportToXLSX } from '@/lib/export';
 
 interface ToolbarProps {
   headers: string[];
@@ -19,8 +19,7 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
 
   const handleCopyAll = async () => {
     try {
-      const tsv = convertToTSV(headers, rows, includeHeaders);
-      await navigator.clipboard.writeText(tsv);
+      await copyToClipboard(headers, rows, includeHeaders);
       alert('전체 데이터가 클립보드에 복사되었습니다. 엑셀에 붙여넣을 수 있습니다.');
     } catch (error) {
       console.error('복사 오류:', error);
@@ -35,8 +34,7 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
     }
 
     try {
-      const tsv = convertToTSV(headers, selectedData, includeHeaders);
-      await navigator.clipboard.writeText(tsv);
+      await copyToClipboard(headers, selectedData, includeHeaders);
       alert(`선택된 ${selectedRows.size}개 행이 클립보드에 복사되었습니다.`);
     } catch (error) {
       console.error('복사 오류:', error);

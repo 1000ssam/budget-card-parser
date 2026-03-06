@@ -12,7 +12,7 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ headers, rows, selectedRows, filename }: ToolbarProps) {
-  const [includeHeaders, setIncludeHeaders] = useState(true);
+  const [includeHeaders, setIncludeHeaders] = useState(false);
   const selectedRowsArray = Array.from(selectedRows).sort((a, b) => a - b);
   const selectedData = selectedRowsArray.map(idx => rows[idx]);
   const hasSelection = selectedRows.size > 0;
@@ -73,7 +73,18 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
     <div className="space-y-2 mb-4">
       {/* 버튼 그룹 */}
       <div className="flex items-center gap-2 flex-wrap">
-        {/* 전체 복사/다운로드 */}
+        {/* 전체 다운로드 */}
+        <button
+          onClick={handleDownloadAll}
+          className="px-3 py-1.5 bg-[#D2886F] text-white text-xs font-normal rounded-lg hover:bg-[#C17760] transition-all hover:shadow-md flex items-center gap-1.5 tracking-tight"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          전체 다운로드
+        </button>
+
+        {/* 전체 복사 */}
         <button
           onClick={handleCopyAll}
           className="px-3 py-1.5 bg-white border border-[#e5e5e5] text-[#171717] text-xs font-normal rounded-lg hover:border-[#D2886F] hover:shadow-md transition-all flex items-center gap-1.5 tracking-tight"
@@ -84,15 +95,16 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
           전체 복사
         </button>
 
-        <button
-          onClick={handleDownloadAll}
-          className="px-3 py-1.5 bg-[#D2886F] text-white text-xs font-normal rounded-lg hover:bg-[#C17760] transition-all hover:shadow-md flex items-center gap-1.5 tracking-tight"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          전체 다운로드
-        </button>
+        {/* 헤더 포함 복사 체크박스 */}
+        <label className="flex items-center gap-1.5 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={includeHeaders}
+            onChange={(e) => setIncludeHeaders(e.target.checked)}
+            className="w-3.5 h-3.5 rounded border-[#e5e5e5] text-[#D2886F] accent-[#D2886F] cursor-pointer"
+          />
+          <span className="text-xs text-[#525252] font-light tracking-tight">헤더 포함 복사</span>
+        </label>
 
         {/* 선택 복사/다운로드 */}
         {hasSelection && (
@@ -121,20 +133,9 @@ export default function Toolbar({ headers, rows, selectedRows, filename }: Toolb
           </>
         )}
 
-        <div className="ml-auto flex items-center gap-3">
-          <label className="flex items-center gap-1.5 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={includeHeaders}
-              onChange={(e) => setIncludeHeaders(e.target.checked)}
-              className="w-3.5 h-3.5 rounded border-[#e5e5e5] text-[#D2886F] accent-[#D2886F] cursor-pointer"
-            />
-            <span className="text-xs text-[#525252] font-light tracking-tight">헤더 포함 복사</span>
-          </label>
-          <span className="text-xs text-[#525252] font-light tracking-tight">
-            총 {rows.length}행
-            {hasSelection && <span className="ml-2 text-[#D2886F]">({selectedRows.size}개 선택)</span>}
-          </span>
+        <div className="ml-auto text-xs text-[#525252] font-light tracking-tight">
+          총 {rows.length}행
+          {hasSelection && <span className="ml-2 text-[#D2886F]">({selectedRows.size}개 선택)</span>}
         </div>
       </div>
     </div>

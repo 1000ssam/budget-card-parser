@@ -1,10 +1,17 @@
+import packageJson from '../../package.json';
+
 export default function Footer() {
   return (
     <footer className="mt-8 pt-6 border-t border-[#e5e5e5]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center gap-2 text-xs text-[#525252] font-light tracking-tight text-center">
-          <div>
-            © 2026 <a href="https://github.com/1000ssam" target="_blank" rel="noopener noreferrer" className="hover:text-[#D2886F] transition-colors">1000쌤</a>. All rights reserved.
+          <div className="flex items-center gap-2">
+            <span>
+              © 2026 <a href="https://github.com/1000ssam" target="_blank" rel="noopener noreferrer" className="hover:text-[#D2886F] transition-colors">1000쌤</a>. All rights reserved.
+            </span>
+            <span className="px-1.5 py-0.5 bg-[#D2886F]/10 text-[#D2886F] rounded text-[10px] font-normal leading-none">
+              v{packageJson.version}
+            </span>
           </div>
 
           <div className="flex items-center gap-4">

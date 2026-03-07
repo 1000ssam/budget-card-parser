@@ -20,13 +20,13 @@ export const changelog: ChangelogEntry[] = [
         label: '새 기능',
         items: [
           '복사 시 헤더 포함/미포함 옵션 추가',
-          'Notion 호환 HTML 테이블 복사 지원',
         ],
       },
       {
-        type: 'changed',
-        label: '개선',
+        type: 'fixed',
+        label: '버그 수정',
         items: [
+          '1개 행 선택 시 Notion 붙여넣기가 안 되던 문제 수정 (HTML 테이블 복사)',
           '헤더 포함 기본값을 OFF로 변경',
           '툴바 버튼 순서 재정렬 (다운로드 우선)',
         ],

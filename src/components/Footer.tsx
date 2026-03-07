@@ -16,6 +16,18 @@ export default function Footer() {
               © 2026 <a href="https://github.com/1000ssam" target="_blank" rel="noopener noreferrer" className="hover:text-[#D2886F] transition-colors">1000쌤</a>. All rights reserved.
             </div>
 
+            <button
+              onClick={() => setShowChangelog(true)}
+              className="group flex items-center gap-1.5 px-3 py-1.5 text-[11px] text-[#737373] hover:text-[#D2886F] transition-all border border-[#e5e5e5] hover:border-[#D2886F]/40 rounded-full hover:bg-[#D2886F]/5"
+            >
+              <span className="font-medium">{APP_VERSION}</span>
+              <span className="hidden sm:inline text-[#a3a3a3] group-hover:text-[#D2886F]/70">|</span>
+              <span className="hidden sm:inline">업데이트 내역</span>
+              <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
             <div className="flex items-center gap-4">
               <a
                 href="https://www.notiontalk.com"
@@ -54,17 +66,6 @@ export default function Footer() {
               </a>
             </div>
 
-            <button
-              onClick={() => setShowChangelog(true)}
-              className="group flex items-center gap-1.5 px-3 py-1.5 text-[11px] text-[#737373] hover:text-[#D2886F] transition-all border border-[#e5e5e5] hover:border-[#D2886F]/40 rounded-full hover:bg-[#D2886F]/5"
-            >
-              <span className="font-medium">{APP_VERSION}</span>
-              <span className="hidden sm:inline text-[#a3a3a3] group-hover:text-[#D2886F]/70">|</span>
-              <span className="hidden sm:inline">업데이트 내역</span>
-              <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
         </div>
       </footer>
